@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset=UTF-8>
+    <title>anketa</title>
+    </head>
+    <body>
+        <script>
+        var Pension_Man = 60;
+        var Pension_Woman = 55;
+
+        function inputAge(msg1,msg2){
+            var age, ageInt, msg;
+            msg = msg1;
+            do{
+            age = prompt (msg);
+            ageInt = parseInt(age);
+            msg = msg2;}
+            while(isNaN(ageInt)||(ageInt<7)||(ageInt>120));
+            return ageInt;
+        }
+
+        function inputFio(msg1,msg2){
+        var fio = '';
+        var pattern = /[А-Яа-я]/
+        var result;
+        msg = msg1;
+            do{
+            fio = String(prompt (msg));
+            result = fio.search(pattern);
+            msg = msg2;
+            }
+            while ((result == -1)||(fio == "null"));
+        return fio;
+        }
+        var Fam = inputFio('Введите вашу фамилию', 'Введите вашу фамилию корректно');
+        var Name = inputFio('Введите ваше имя', 'Введите ваше имя корректно');
+        var Otch = inputFio('Введите ваше отчество','Введите ваше отчество корректно');
+        var Age = inputAge ('Введите ваш возраст в годах', 'Введите возраст в интервале от 7 до 120 лет');
+        var Male = confirm ('Ваш пол мужской?');
+        var FIO = 'ваше ФИО: '+Fam+' '+Name+' '+Otch;
+        var Vozrast = 'ваш возраст в годах: '+Age;
+            var Age_Num = parseInt (Age);
+            var Age_5 = Age_Num+5;
+        var Vozrast_D = 'ваш возраст в днях: '+ Age_Num*365;
+        var Vozrast_5 = 'через пять лет вам будет: ' + Age_5;
+            var Pol;
+            if (Male)
+                Pol = 'мужской'
+            else
+                Pol = 'женский';
+        var Pol_txt = 'ваш пол: ' + Pol;
+            var Pension;
+        (Male)?((Age_Num >= Pension_Man)?Pension = 'да':Pension = 'нет')
+        :((Age_Num >= Pension_Woman)?Pension = 'да':Pension = 'нет');
+        var Pension_txt = 'вы на пенсии: ' + Pension;
+
+        alert (FIO+'\n'+Vozrast+'\n'+Vozrast_D+'\n'+Vozrast_5+'\n'+Pol_txt+'\n'+Pension_txt);
+        </script>
+    </body>
+</html>
